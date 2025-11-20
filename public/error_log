@@ -1,0 +1,51 @@
+[14-Jun-2025 03:33:26 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:28 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:29 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:31 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:33 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:33 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:34 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:34 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:34 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:34 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:34 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:35 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:35 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:35 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[14-Jun-2025 03:33:35 Asia/Karachi] PHP Fatal error:  Cannot use Illuminate\Support\Facades\Route as Route because the name is already in use in /home/myshariawill/public_html/portal.myshariawill.co.uk/routes/web.php on line 219
+[13-Jun-2025 22:45:07 UTC] PHP Fatal error:  Uncaught RuntimeException: A facade root has not been set. in /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:258
+Stack trace:
+#0 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php(18): Illuminate\Support\Facades\Facade::__callStatic('replaceNamespac...', Array)
+#1 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(598): Illuminate\Foundation\Exceptions\RegisterErrorViewPaths->__invoke()
+#2 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->registerErrorViewPaths()
+#3 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException(Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#4 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#5 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(427): Illuminate\Foundation\Exceptions\Handler->render(Object(Illuminate\Http\Request), Object(ParseError))
+#6 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(115): Illuminate\Foundation\Http\Kernel->renderException(Object(Illuminate\Http\Request), Object(ParseError))
+#7 /home/myshariawill/public_html/portal.myshariawill.co.uk/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#8 {main}
+  thrown in /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 258
+[13-Jun-2025 22:45:09 UTC] PHP Fatal error:  Uncaught RuntimeException: A facade root has not been set. in /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:258
+Stack trace:
+#0 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php(18): Illuminate\Support\Facades\Facade::__callStatic('replaceNamespac...', Array)
+#1 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(598): Illuminate\Foundation\Exceptions\RegisterErrorViewPaths->__invoke()
+#2 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->registerErrorViewPaths()
+#3 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException(Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#4 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#5 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(427): Illuminate\Foundation\Exceptions\Handler->render(Object(Illuminate\Http\Request), Object(ParseError))
+#6 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(115): Illuminate\Foundation\Http\Kernel->renderException(Object(Illuminate\Http\Request), Object(ParseError))
+#7 /home/myshariawill/public_html/portal.myshariawill.co.uk/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#8 {main}
+  thrown in /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 258
+[13-Jun-2025 22:45:13 UTC] PHP Fatal error:  Uncaught RuntimeException: A facade root has not been set. in /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php:258
+Stack trace:
+#0 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/RegisterErrorViewPaths.php(18): Illuminate\Support\Facades\Facade::__callStatic('replaceNamespac...', Array)
+#1 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(598): Illuminate\Foundation\Exceptions\RegisterErrorViewPaths->__invoke()
+#2 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(579): Illuminate\Foundation\Exceptions\Handler->registerErrorViewPaths()
+#3 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(490): Illuminate\Foundation\Exceptions\Handler->renderHttpException(Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#4 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/Handler.php(356): Illuminate\Foundation\Exceptions\Handler->prepareResponse(Object(Illuminate\Http\Request), Object(Symfony\Component\HttpKernel\Exception\HttpException))
+#5 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(427): Illuminate\Foundation\Exceptions\Handler->render(Object(Illuminate\Http\Request), Object(ParseError))
+#6 /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(115): Illuminate\Foundation\Http\Kernel->renderException(Object(Illuminate\Http\Request), Object(ParseError))
+#7 /home/myshariawill/public_html/portal.myshariawill.co.uk/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#8 {main}
+  thrown in /home/myshariawill/public_html/portal.myshariawill.co.uk/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php on line 258

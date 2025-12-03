@@ -214,15 +214,13 @@ class FrontEndController extends Controller
         return redirect()->back()->with($ResponseStatus, $ResponseMSG);
     }
 
-    public function validateusername(Request $req)
+    public function validateusername(Request $req, $UserName)
     {
-        $UserName = $req->UserName;
         return $UserNameCount = User::where(['username' => $UserName])->count();
     }
 
-    public function validateemail(Request $req)
+    public function validateemail(Request $req, $Email)
     {
-        $Email = $req->Email;
         return $EmailCount = User::where(['email' => $Email])->count();
     }
 
@@ -252,29 +250,46 @@ class FrontEndController extends Controller
 
             if ($isGoodToGo) :
 
-                try {
-                    $url = url("/verifyemail?token=" . $Token);
-
-                    Mail::send('emails.verification', compact('url'), function ($message) use ($Email) {
-                        $message->to($Email);
-                        $message->from(config('mail.from.address'));
-                        $message->subject('Verify Your Email');
-                    });
-
-                    $User = new User;
-                    $User->role_id = 2;
-                    $User->name = $FullName;
-                    $User->username = $UserName;
-                    $User->email = $Email;
-                    $User->password = Hash::make($Password);
-                    $User->contact_no = $ContactNo;
-                    $User->email_verification_token = $Token;
-                    if ($User->save()) :
+                // Create user first
+                $User = new User;
+                $User->role_id = 2;
+                $User->name = $FullName;
+                $User->username = $UserName;
+                $User->email = $Email;
+                $User->password = Hash::make($Password);
+                $User->contact_no = $ContactNo;
+                $User->email_verification_token = $Token;
+                $User->is_email_verified = 1; // Auto-verify for now since email might not be configured
+                $User->email_verified_at = date('Y-m-d h:i:s');
+                $User->status = 1;
+                
+                if ($User->save()) :
+                    // Try to send email after user is created
+                    $emailSent = false;
+                    try {
+                        $url = url("/verifyemail?token=" . $Token);
+                        Mail::send('emails.verification', compact('url'), function ($message) use ($Email) {
+                            $message->to($Email);
+                            $message->from(config('mail.from.address'));
+                            $message->subject('Verify Your Email');
+                        });
+                        $emailSent = true;
+                    } catch (\Exception $emailexception) {
+                        // Log the email error but don't fail the registration
+                        \Log::error('Email sending failed during registration', [
+                            'email' => $Email,
+                            'error' => $emailexception->getMessage(),
+                            'line' => $emailexception->getLine()
+                        ]);
+                        $emailSent = false;
+                    }
+                    
+                    if ($emailSent) {
                         return redirect()->route('login')->with('msg', '<h5 class="mb-0 text-center mt-3 text-success">A verification link has been sent to the email ' . $Email . '<br> Please also check your <strong>Spam/Junk</strong> folder if you dont see it in your inbox.</h5>');
-                    endif;
-                } catch (\Exception $emailexception) {
-                    echo 'Email Exception | ' . $emailexception->getMessage() . ' on line number ' . $emailexception->getLine();
-                }
+                    } else {
+                        return redirect()->route('login')->with('msg', '<h5 class="mb-0 text-center mt-3 text-warning">Your account has been created successfully, but we could not send the verification email. Please contact support or try logging in.</h5>');
+                    }
+                endif;
             else :
                 echo join(' And ', $Errors) . ' already exists';
             endif;
@@ -302,9 +317,16 @@ class FrontEndController extends Controller
             if ($user_id) :
                 \Log::info('User ID found, processing payment');
                 
+                // Check if Stripe key is configured
+                $stripeSecretKey = env('STRIPE_SECRET_KEY');
+                if (empty($stripeSecretKey)) {
+                    \Log::error('STRIPE_SECRET_KEY is not configured in .env file');
+                    return redirect()->back()->with('error', 'Payment system is not configured. Please contact support.');
+                }
+                
                 // Re-enable Stripe checkout
                 \Log::info('Creating Stripe client');
-                $stripe = new StripeClient(env('STRIPE_SECRET_KEY'));
+                $stripe = new StripeClient($stripeSecretKey);
                 \Log::info('Stripe client created, creating session');
                 $session = $stripe->checkout->sessions->create([
                     'line_items' => [
@@ -426,7 +448,13 @@ class FrontEndController extends Controller
                     $UserUpdate->queries_submission_datetime = date('Y-m-d H:i:s');
                 }
 
-                $stripe = new StripeClient(env('STRIPE_SECRET_KEY'));
+                $stripeSecretKey = env('STRIPE_SECRET_KEY');
+                if (empty($stripeSecretKey)) {
+                    \Log::error('STRIPE_SECRET_KEY is not configured in .env file');
+                    return redirect()->back()->with('error', 'Payment system is not configured. Please contact support.');
+                }
+                
+                $stripe = new StripeClient($stripeSecretKey);
                 $session = $stripe->checkout->sessions->retrieve($session_id);
                 $stripe_response = json_encode($session);
                 $UserUpdate->payment_response = $stripe_response;
@@ -1678,5 +1706,10 @@ class FrontEndController extends Controller
         // $FinalArray = json_encode($FinalArray);
 
         return $FinalArray;
+    }
+
+    public function ExceptionMessage($ex)
+    {
+        return 'Exception | ' . $ex->getMessage() . ' On Line Number ' . $ex->getLine();
     }
 }

@@ -924,6 +924,7 @@ $Alphabets = range('A','Z');
                 },
                 success: function (e) {
                     $('.ModalListGroup').empty();
+                    if (e && e.length > 0 && e[0] && e[0].AttemptedAnswers) {
                     $.each(e[0].AttemptedAnswers, function (i, option) {
                         var QuestionID = option.QuestionID;
                         var QuestionTitle = option.QuestionTitle;
@@ -1020,6 +1021,9 @@ $Alphabets = range('A','Z');
                             });
                         }
                     });
+                    } else {
+                        $('.ModalListGroup').append('<li class="list-group-item">No attempted answers found.</li>');
+                    }
                     Swal.close();
                     $('#ReviewAlQuestionsModal').modal('show');
                 }

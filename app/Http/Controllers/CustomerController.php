@@ -120,7 +120,11 @@ class CustomerController extends Controller
 
     public function appointment_purchase(Request $req)
     {
-        $stripe = new StripeClient(env('STRIPE_SECRET_KEY'));
+        $stripeSecretKey = env('STRIPE_SECRET_KEY');
+        if (empty($stripeSecretKey)) {
+            return redirect()->back()->with('error', 'Payment system is not configured. Please contact support.');
+        }
+        $stripe = new StripeClient($stripeSecretKey);
         $session = $stripe->checkout->sessions->create([
             'line_items' => [
                 [
@@ -161,7 +165,11 @@ class CustomerController extends Controller
                         $UserUpdate->appointment_payment_date = date('Y-m-d h:i:s');
                         $UserUpdate->appointment_pre_payment_session_key = null;
     
-                        $stripe = new StripeClient(env('STRIPE_SECRET_KEY'));
+                        $stripeSecretKey = env('STRIPE_SECRET_KEY');
+                        if (empty($stripeSecretKey)) {
+                            return redirect()->back()->with('error', 'Payment system is not configured. Please contact support.');
+                        }
+                        $stripe = new StripeClient($stripeSecretKey);
                         $session = $stripe->checkout->sessions->retrieve($session_id);
                         $stripe_response = json_encode($session);
                         $UserUpdate->appointment_payment_response = $stripe_response;
